@@ -38,7 +38,7 @@ server.on('upgrade', (req, socket, head) => {
 
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (_, res: any) => {
+app.get('/', (_: any, res: any) => {
   return res.json({ server: 'online' });
 });
 
