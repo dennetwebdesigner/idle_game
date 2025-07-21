@@ -6,6 +6,7 @@ import WebSocket from 'ws';
 const app = express();
 const server = http.createServer(app);
 app.use(cors({ origin: '*' }));
+app.use(express.json());
 
 const wss = new WebSocket.Server({ noServer: true });
 
@@ -35,6 +36,10 @@ server.on('upgrade', (req, socket, head) => {
   });
 });
 
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT || 3000;
+
+app.get('/', (_, res: any) => {
+  return res.json({ server: 'online' });
+});
 
 server.listen(PORT, () => console.log(`Server online in port ${PORT}`));
