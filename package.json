@@ -9,22 +9,31 @@
     "server": "lt --port 3000 --subdomain idlegamex"
   },
   "dependencies": {
+    "@prisma/adapter-better-sqlite3": "^6.12.0",
+    "@prisma/client": "^6.12.0",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "socket.io": "^4.8.1",
     "uuid": "^11.1.0",
+    "validator": "^13.15.15",
     "ws": "^8.18.3"
   },
   "devDependencies": {
     "@eslint/json": "^0.13.0",
+    "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.0.15",
     "@types/socket.io": "^3.0.2",
+    "@types/validator": "^13.15.2",
     "@types/ws": "^8.18.1",
     "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.3",
     "prettier": "^3.6.2",
+    "prisma": "^6.12.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   }

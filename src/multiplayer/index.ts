@@ -1,10 +1,10 @@
 import { Server } from 'http';
 import WebSocket from 'ws';
 
-import { broadcast, emit, on } from '../utils/socket_methods';
 import { _get_mensage_chat } from './chat_online/send_message';
 import { _disconnet_player } from './connections/_disconnect_player';
 import { _new_session, _set_user } from './connections/_new_player';
+import { _register_user } from './connections/_register_user';
 
 export const wss = new WebSocket.Server({ noServer: true });
 const SESSIONS: Record<string, Record<string, any>> = {};
@@ -12,13 +12,13 @@ const SESSIONS: Record<string, Record<string, any>> = {};
 export function server_init(server: Server) {
   // Lida com conexões WebSocket
   wss.on('connection', (socket) => {
-    const id = _new_session(socket);
+    let id = _new_session(socket);
 
     socket.on('message', (message) => {
       const response = JSON.parse(message.toString());
       if (!('flag' in response) || !('data' in response)) return;
-
-      _set_user(response);
+      _register_user(response);
+      _set_user(response, (_id: string) => (id = _id));
       //CHAT ONLINE
       _get_mensage_chat(response);
     });
